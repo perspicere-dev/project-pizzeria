@@ -167,8 +167,15 @@
           const option = param.options[optionId];
           console.log(optionId, option);
 
-          // [in progress] check if there is param with a name of paramId in formData and if it includes optionId
-          if(formData[paramId] && formData[paramId].includes(optionId)) {
+          //  check if there is param with a name of paramId in formData and if it includes optionId
+          const optionSelectedInForm = formData[paramId] && formData[paramId].includes(optionId);
+
+          // find an image of class = .paramId-optionId pair in the div wich contains images
+          const optionImage = thisProduct.imageWrapper.querySelector(`.${ paramId }-${ optionId }`);
+          console.log('optionImage', optionImage);
+
+          // price calculating for checked/unchecked options in form
+          if(optionSelectedInForm) {
             // check if the option is not default
             if(option.hasOwnProperty('default') != true  ) {
               // add option price to price variable
@@ -181,8 +188,17 @@
               price = price - option.price;
             }
           }
-        }
 
+          // adding images to food based on optionSelectedInForm
+          if(optionImage){
+            if(optionSelectedInForm){
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            } else{
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
+        }
+        
         // update calculated price in the HTML
         thisProduct.priceElem.innerHTML = price;
       }
