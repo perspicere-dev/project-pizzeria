@@ -239,7 +239,14 @@
 
       const newValue = parseInt(value);
 
-      if(thisWidget.value !== newValue && !isNaN(newValue)){
+      const ifConditionsArray = [
+        thisWidget.value !== newValue,
+        !isNaN(newValue),
+        newValue >= settings.amountWidget.defaultMin,
+        newValue <= settings.amountWidget.defaultMax,
+      ]
+
+      if(!ifConditionsArray.includes(false)){
         thisWidget.value = newValue;
       }
       thisWidget.input.value = thisWidget.value;
@@ -260,6 +267,13 @@
         thisWidget.setValue(++thisWidget.value);
       });
     }
+
+    // //announce () {
+    //   const thisWidget = this;
+    //
+    //   const event = new Event('updatedQuantityProdutcs');
+    //   thisWidget.element.dispatchEvent(event);
+    // }
 
 
 
