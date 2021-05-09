@@ -253,11 +253,11 @@
       });
       thisWidget.linkDecrease.addEventListener('click', function() {
          event.preventDefault();
-         thisWidget.setValue(thisWidget.value --)
+         thisWidget.setValue(--thisWidget.value)
       });
-      thisWidget.linkIncrease.addEventListener('click', function() {
+      thisWidget.linkIncrease.addEventListener('click', function () {
         event.preventDefault();
-        thisWidget.setValue(thisWidget.value ++)
+        thisWidget.setValue(++thisWidget.value);
       });
     }
 
