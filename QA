@@ -1,0 +1,79 @@
+Omówić przebieg funkcji handler i clickListeners. Co pierwsze jest wykonywane i po co? Czy mmusi byc przy autorach też "#author-"?
+
+7. Problem leży w tym, że jeśli dwa artykuły mają ten sam tag, to dodalibyśmy go dwukrotnie. Dlatego musimy zastosować inne podejście. Dwukrotnie?
+
+Tłumaczenie: "Dokończenie funkcji calculateTagsParams" - wtf?! "Ustawiamy takie początkowe wartości max i min, aby wykluczyć szansę na to, że wpłyną one na finalne wartości tych parametrów."?
+"Łatwiej jest zrozumieć max niż min – ustawiamy max na 0, żeby potem podnosić tę wartość od największej liczby wystąpień tagu." - podnosić tę wartość od największej liczby wystąpień tagu?
+
+moduł 7: "W naszym przykładzie tag ma o 4 wystąpienia więcej od najmniejszej liczby, a maksimum – 8." - co to znaczy do (&*&(* "a maximum 8"?
+
+Skąd funkcja wie czym jest "count", że ti liczba wystąpień tagu? mod. 7
+
+Nie wyświetal się inlinowe chmura tagów- zmiana kodu html linka?
+
+
+
+Wrócić do tablic. obiektów - poradnik i ANGELA!!
+
+////
+Pytania 8
+!0. W jaki sposób parametr "value" trafia do funkcji set value?
+
+0.1. WDlaczego musi być wywłanie thisWidget.announce(); a nie może być samo announce(); w setValue(value){?
+
+1. W jaki sposób dane z dataSource trafiły do "const thisApp" w metodzie initMenu? /jak to jest z tym this...
+
+2. "Jak możemy to zrobić? Wystarczy skorzystać z this (lub thisProduct, które też prowadzi do tego samego obiektu). Jak zapewne pamiętasz,
+this jest właśnie odnośnikiem do obiektu, który jest utworzony przez klasę podczas inicjacji, a więc w momencie uruchomienia instrukcji new Product.
+Zapisując właściwości do thisProduct, przypiszemy je więc po prostu do danej instancji." - nie rozumiem ;(
+
+3. Jakie są relacje miedzy np. thisApp.data / data?
+
+4. // for every category (param)...
+  for(let !!!paramId in thisProduct.data.params) {
+    // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+    const param = !!!thisProduct.data.params[paramId];
+    console.log(paramId, param);
+
+    // for every option in this category
+    for(let optionId in param.options) {
+      // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+      const option = param.options[optionId];
+      console.log(optionId, option);
+    }
+  }
+
+5. Przerobić jak to jest z tym this product, this. CO z czego/ Skąd, po kolei. W jaki sposób script.js łączy się z data.js? Wiem, że dzięki thisApp.data = dataSource; itd. ale nie rozumiem tego do końca.
+
+6. Vendor? Pluginy?
+
+7. moduł 9. "Pamiętaj przy tym, żeby szukać go w divie pojedynczego produktu, a nie całym dokumencie. Inaczej bowiem moglibyśmy "przypadkiem" znaleźć div z inputem z innego produktu (w końcu każdy div
+produktu ma identyczną strukturę HTML), a tego nie chcemy." - czyli jak? Jak działa thisProduct.element?
+
+8. "Następnie, wciąż w klasie Product, dodaj nową metodę initAmountWidget. Będzie ona odpowiedzialna za utworzenie nowej instancji klasy AmountWidget i zapisywanie jej we właściwości produktu.
+Po to, aby w razie potrzeby mieć do niej łatwy dostęp." - troche wyjasniennia co w czym i dlaczego.
+
+9. Tworzenie instancji klasy, [] na przykładnie const app.
+
+10. thisWidget.getElements(element); + getElements(element){} ?
+
+11. Dlaczego tak "thisWidget.value !== newValue" a nie np. "value !=="? "Zaczniemy od najprostszego ifa. Sprawdzimy, czy wartość,
+która przychodzi do funkcji, jest inna niż ta, która jest już aktualnie w thisWidget.value. PowiniePowinien on warunkować,
+czy linijka thisWidget.value = newValue ma się w ogóle wykonać."
+Jak to przychodzi do funcji w opisie?
+
+12. setValue(value){
+  const thisWidget = this;
+
+  const newValue = parseInt(value)
+
+  if(thisWidget.value !== newValue && !isNaN(newValue)){ // thisWidget.value to this a value to parametr?
+    thisWidget.value = newValue;
+  }
+
+  thisWidget.input.value = thisWidget.value;
+}
+
+13. thisWidget.setValue(thisWidget.input.value); - to oznacza, że ta metoda jest wywoływana na danych z thisWidget.input.value czyli wprowadzonych przez użytkownika?
+
+14
