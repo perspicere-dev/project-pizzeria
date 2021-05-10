@@ -200,6 +200,8 @@
             }
           }
         }
+        // multiply price by amount
+        price *= thisProduct.amountWidget.value;
 
         // update calculated price in the HTML
         thisProduct.priceElem.innerHTML = price;
@@ -210,6 +212,9 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updatedProdutcsQuantity', function () {
+      thisProduct.processOrder();
+    });
     }
   }
 
@@ -238,16 +243,18 @@
       const thisWidget = this;
 
       const newValue = parseInt(value);
-
-      const ifConditionsArray = [
+//!!!!doesnt work min/max!!!!!!!
+      const ConditionsArray = [
         thisWidget.value !== newValue,
         !isNaN(newValue),
         newValue >= settings.amountWidget.defaultMin,
         newValue <= settings.amountWidget.defaultMax,
       ]
-
-      if(!ifConditionsArray.includes(false)){
+//!!!!run announce() here?
+      if(!ConditionsArray.includes(false)){
         thisWidget.value = newValue;
+        thisWidget.announce();
+        console.log('announce', thisWidget.announce());
       }
       thisWidget.input.value = thisWidget.value;
     }
@@ -268,12 +275,12 @@
       });
     }
 
-    // //announce () {
-    //   const thisWidget = this;
-    //
-    //   const event = new Event('updatedQuantityProdutcs');
-    //   thisWidget.element.dispatchEvent(event);
-    // }
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event('updatedProdutcsQuantity');
+      thisWidget.element.dispatchEvent(event);
+    }
 
 
 
