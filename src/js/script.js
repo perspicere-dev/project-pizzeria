@@ -244,34 +244,33 @@
 
       const newValue = parseInt(value);
 //!!!!doesnt work min/max!!!!!!!
-      const ConditionsArray = [
-        thisWidget.value !== newValue,
-        !isNaN(newValue),
-        newValue >= settings.amountWidget.defaultMin,
-        newValue <= settings.amountWidget.defaultMax,
-      ]
-//!!!!run announce() here?
-      if(!ConditionsArray.includes(false)){
+
+      if(
+        thisWidget.value !== newValue &&
+        !isNaN(newValue) &&
+        newValue >= settings.amountWidget.defaultMin &&
+        newValue <= settings.amountWidget.defaultMax
+      ){
         thisWidget.value = newValue;
         thisWidget.announce();
-        console.log('announce', thisWidget.announce());
+        thisWidget.input.value = thisWidget.value;
       }
-      thisWidget.input.value = thisWidget.value;
+
     }
 
     initActions(){
       const thisWidget = this;
 
       thisWidget.input.addEventListener('change', function() {
-        thisWidget.setValue(thisWidget.input.value)
+        thisWidget.setValue(thisWidget.input.value);
       });
       thisWidget.linkDecrease.addEventListener('click', function() {
          event.preventDefault();
-         thisWidget.setValue(--thisWidget.value)
+         thisWidget.setValue(thisWidget.value - 1);
       });
       thisWidget.linkIncrease.addEventListener('click', function () {
         event.preventDefault();
-        thisWidget.setValue(++thisWidget.value);
+        thisWidget.setValue(thisWidget.value + 1);
       });
     }
 
