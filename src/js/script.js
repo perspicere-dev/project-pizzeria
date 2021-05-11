@@ -221,6 +221,7 @@
   class AmountWidget {
     constructor(element){
       const thisWidget = this;
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
@@ -241,9 +242,7 @@
 
     setValue(value){
       const thisWidget = this;
-
       const newValue = parseInt(value);
-//!!!!doesnt work min/max!!!!!!!
 
       if(
         thisWidget.value !== newValue &&
@@ -253,9 +252,9 @@
       ){
         thisWidget.value = newValue;
         thisWidget.announce();
-        thisWidget.input.value = thisWidget.value;
-      }
 
+      }
+      thisWidget.input.value = thisWidget.value;
     }
 
     initActions(){
