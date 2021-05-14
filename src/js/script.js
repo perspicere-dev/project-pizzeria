@@ -195,14 +195,14 @@
       for(let paramId in thisProduct.data.params) {
         // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
         const param = thisProduct.data.params[paramId];
-        console.log(paramId, param);
+        console.log("paramId", paramId);
 
 
         // for every option in this category
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-          console.log(optionId, option);
+          console.log("optionId", option);
 
           //  check if there is param with a name of paramId in formData and if it includes optionId
           const optionSelectedInForm = formData[paramId] && formData[paramId].includes(optionId);
@@ -271,10 +271,43 @@
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.priceSingle * thisProduct.amountWidget.value,
-        params: {},
+        params: thisProduct.prepareCartProductParams(),
       };
       return productSummary;
     }
+
+    prepareCartProductParams(){
+
+        const thisProduct = this;
+        const formData = utils.serializeFormToObject(thisProduct.form);     
+        const params = {}
+        // for every category (param)...
+        for(let paramId in thisProduct.data.params) {
+          // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+          const param = thisProduct.data.params[paramId];
+
+          params[paramId] = {
+            label: param.label,
+            options: {},
+          }
+  
+  
+          // for every option in this category
+          for(let optionId in param.options) {
+            // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+            const option = param.options[optionId];
+            const optionSelectedInForm = formData[paramId] && formData[paramId].includes(optionId);
+            
+            if(optionSelectedInForm){
+              params[paramId].options[optionId] = option.label;
+            }
+          }
+  
+        }
+        return params;
+      }
+
+    
   };
 
   class AmountWidget {
@@ -351,6 +384,7 @@
 
       for (let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
+        console.log(`"for in" in thisApp.data.products for productData: ${ productData }; in "thisApp.data.products[productData]" [] means value of key ${ productData } and equals to ${ thisApp.data.products[productData] }`);
       }
     },
 
