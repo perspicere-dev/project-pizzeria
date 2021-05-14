@@ -76,4 +76,12 @@ Jak to przychodzi do funcji w opisie?
 
 13. thisWidget.setValue(thisWidget.input.value); - to oznacza, że ta metoda jest wywoływana na danych z thisWidget.input.value czyli wprowadzonych przez użytkownika?
 
-14
+
+//////
+
+14. Jak działa zapisywanie danych do amawianego produktu np. 
+prepareCartProduct(){
+      const thisProduct = this;
+      const productSummary = {
+        id: thisProduct.id;
+        name: thisProduct.data.name; 
