@@ -129,6 +129,7 @@
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
+      
     }
 
     initAccordion(){
@@ -274,6 +275,7 @@
         params: thisProduct.prepareCartProductParams(),
       };
       return productSummary;
+
     }
 
     prepareCartProductParams(){
@@ -431,6 +433,8 @@
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+
     }
 
     initActions(){
@@ -440,11 +444,34 @@
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
     }
-
     add(menuProduct){
-      //const thisCart = this;
-
+      const thisCart = this;
       console.log('adding product', menuProduct);
+      const generatedHTML = templates.cartProduct(menuProduct);
+      const generatedDom = utils.createDOMFromHTML(generatedHTML);
+      thisCart.dom.productList.appendChild(generatedDom);
+
+
+
+
+
+      // renderInMenu(){
+      //   const thisProduct = this;
+  
+      //   /* genarate HTML based on templates */
+      //   const generatedHTML = templates.menuProduct(thisProduct.data);
+      //   //console.log('generatedHTML', generatedHTML);
+  
+      //   /* create element using utils.createElementFromHTML */
+      //   thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+  
+  
+      //   /* find menu container */
+      //   const menuContainer = document.querySelector(select.containerOf.menu);
+  
+      //   /* add element to menu */
+      //   menuContainer.appendChild(thisProduct.element);
+      // }
     }
 
   };
