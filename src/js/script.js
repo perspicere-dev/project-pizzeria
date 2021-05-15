@@ -403,6 +403,7 @@
       thisApp.cart = new Cart(cartElem);
     },
 
+
     init: function(){
       const thisApp = this;
       console.log('*** App starting ***');
@@ -448,33 +449,42 @@
       const thisCart = this;
       console.log('adding product', menuProduct);
       const generatedHTML = templates.cartProduct(menuProduct);
-      const generatedDom = utils.createDOMFromHTML(generatedHTML);
-      thisCart.dom.productList.appendChild(generatedDom);
-
-
-
-
-
-      // renderInMenu(){
-      //   const thisProduct = this;
-  
-      //   /* genarate HTML based on templates */
-      //   const generatedHTML = templates.menuProduct(thisProduct.data);
-      //   //console.log('generatedHTML', generatedHTML);
-  
-      //   /* create element using utils.createElementFromHTML */
-      //   thisProduct.element = utils.createDOMFromHTML(generatedHTML);
-  
-  
-      //   /* find menu container */
-      //   const menuContainer = document.querySelector(select.containerOf.menu);
-  
-      //   /* add element to menu */
-      //   menuContainer.appendChild(thisProduct.element);
-      // }
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      thisCart.dom.productList.appendChild(generatedDOM);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
+      console.log("tablica thisCart.products", thisCart.products);
     }
 
   };
+
+  class CartProduct{
+    constructor(menuProduct, element){
+    const thisCartProduct = this;
+
+    thisCartProduct.id = menuProduct.id;
+    thisCartProduct.name = menuProduct.name;
+    thisCartProduct.amount = menuProduct.amount;
+    thisCartProduct.priceSingle = menuProduct.priceSingle;
+    thisCartProduct.price = menuProduct.price;
+    thisCartProduct.params = menuProduct.params;
+    console.log("thisCartProduct", thisCartProduct);
+
+    thisCartProduct.getElements(element);
+    }
+
+    getElements(element){
+      const thisCartProduct = this;
+      thisCartProduct.dom = {};
+      thisCartProduct.dom.wrapper = element;
+      thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
+      thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
+      thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
+      thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
+    }
+
+
+
+  }
 
   app.init();
 }
