@@ -409,8 +409,8 @@
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
       thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
-      thisCart.dom.subTotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subTotalPrice);
-      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
+      thisCart.dom.subTotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
       
     };
@@ -435,31 +435,32 @@
     };
 
     update(){
-      debugger;
+     
       const thisCart = this;
       thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
       thisCart.totalNumber = 0;
       thisCart.subTotalPrice = 0;
 
       for (let product of thisCart.products){
-        thisCart.totalNumber += product.amount;
         thisCart.subTotalPrice += product.price;
+        thisCart.totalNumber += product.amount;
       }
-      if (thisCart.totalNumber = 0){
+      if (thisCart.totalNumber == 0){
         thisCart.totalprice = 0;
       } else {
-        thisCart.totalprice = thisCart.subTotalPrice + thisCart.deliveryFee;
+        thisCart.totalPrice = thisCart.subTotalPrice + thisCart.deliveryFee;
       }
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
       thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
       thisCart.dom.subTotalPrice.innerHTML = thisCart.subTotalPrice;
-      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
-      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
-      
+      for (let price of thisCart.dom.totalPrice){
+        price.innerHTML = thisCart.totalPrice;
+      }    
       console.log("deliveryFee: ", thisCart.deliveryFee);
       console.log("thisCart.totalNumber", thisCart.totalNumber);
       console.log("thisCart.subTotalPrice", thisCart.subTotalPrice);
-      console.log("thisCart.totalprice", thisCart.totalprice);
-    }
+      console.log("thisCart.totalprice", thisCart.totalPrice);
+    };
 
   };
 

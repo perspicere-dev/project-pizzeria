@@ -81,4 +81,5 @@ Jak to przychodzi do funcji w opisie?
 
 14. Czym jest jak i skąd menuProduct trafia do Cart.add?
 15. Czy "elementem" jest  const cartElem = document.querySelector(select.containerOf.cart);, czyli 
-
+16. Czy w "Następnie dodaj dwie kolejne stałe totalNumber i subTotalPrice. Pierwsza będzie odpowiadała całościowej liczbie sztuk, a druga zsumowanej cenie za wszystko 
+(chociaż bez kosztu dostawy). Każdej z nich przypisz startowo wartość 0." to mogą być satłe, skoro potem w pętli zmieniam ich wartości?
