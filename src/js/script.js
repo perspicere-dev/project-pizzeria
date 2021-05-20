@@ -454,7 +454,7 @@
       });                                                                            // new object in CustomEvent 'remove' properties in detail key. This is the cartProduct: thisCartProduct 
     }
 
-    sendOrder(){
+    sendOrder(){ 
       const thisCart = this;
       const url = settings.db.url + '/' + settings.db.orders;      
 
@@ -593,7 +593,7 @@
       thisCartProduct.dom.amountWidget.addEventListener('updatedProdutcsQuantity', function () {
         thisCartProduct.amount = thisCartProduct.amountWidget.value;
         thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
-        thisCartProduct.dom.price.innerHTML = thisCartProduct.prpayloaice;
+        thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
     }
 
