@@ -469,7 +469,7 @@
       };
       
       for(let cartProduct of thisCart.products) {
-        payload.products.push(cartProduct.getData());
+        payload.products.push(cartProduct.getData()); // speak loud 
       }
 
       const options = {
@@ -480,8 +480,8 @@
         body: JSON.stringify(payload),
       };
       fetch(url, options)
-        .then(function(rawResponse){
-          return rawResponse.json();
+        .then(function(response){
+          return response.json();
         })
         .then(function(parsedResponse){
           console.log('parsedResponse', parsedResponse);
