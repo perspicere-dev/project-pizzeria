@@ -26,7 +26,7 @@ export const select = {
   },
   widgets: {
     amount: {
-      input: 'input.amount', // CODE CHANGED
+      input: 'input.amount', 
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
     },
@@ -40,7 +40,14 @@ export const select = {
       output: '.output',
     },
   },
-  // CODE ADDED START
+  booking: {
+    peopleAmount: '.people-amount',
+    hoursAmount: '.hours-amount',
+    tables: '.floor-plan .table',
+  },
+  nav: {
+    links: '.main-nav a',
+  },
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
@@ -59,7 +66,6 @@ export const select = {
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
   },
-  // CODE ADDED END
 };
   
 export const classNames = {
@@ -67,7 +73,6 @@ export const classNames = {
     wrapperActive: 'active',
     imageVisible: 'active',
   },
-  // CODE ADDED START
   cart: {
     wrapperActive: 'active',
   },

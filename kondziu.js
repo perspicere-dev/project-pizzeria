@@ -274,5 +274,149 @@ const result2 = filter([5, 6, 7, 9], function(item) { return item >= 7 });
 
 console.log(result1, result2)
 
+//Raf. dodaj dwie tablice tej samej długości
+function sumOfArrays(array1, array2) {
+	const arraysSum = [];
+
+  for (let i = 0; i < array1.length; i++) {
+    arraysSum.push(array1[i] + array2[i]);
+  }
+ 
+	return arraysSum;
+}
+  
+const result = sumOfArrays([1, 2, 4, 0], [2, 6, 1, 1]);
+console.log(result)
+
+//Raf. dodaj tablice w tablicy
+function sumOfArrays(array) {
+	let arraysSum = array[0];
+  
+  for (let i = 1; i < array.length; i++) {
+  	console.log('array[i]', array[i]);
+    
+    for (let j = 0; j < array[i].length; j++) {    	
+      arraysSum[j] += array[i][j];
+    }  
+  }
+
+  return arraysSum;
+}
+  
+const result = sumOfArrays([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]);
+console.log("result", result);
+  
+//Raf. zrób to co wcześniej ale uyj finskji z pierwszego zadania i uzyj w powyzszym przyk…łądzie
+
+function sumOfArrays(array) {
+	let arraysSum = array[0];
+  
+  for (let i = 1; i < array.length; i++) {
+  	console.log('array[i]', array[i]);    
+    arraysSum = addArrays(arraysSum, array[i]);
+  }
+
+  return arraysSum;
+}
+
+function addArrays(array1, array2){
+	const arraysSum = [];
+
+  for (let i = 0; i < array1.length; i++) {
+    arraysSum.push(array1[i] + array2[i]);
+  }
+  
+	return arraysSum;
+}
+const result = sumOfArrays([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]);
+console.log("result", result);
+
+
+//kolejny uopgrade - róna długosć tablic
+
+
+function sumOfArrays(array) {
+	let arraysSum = [...array[0]];
+  
+  for (let i = 1; i < array.length; i++) {
+  	//console.log('array[i]', array[i]);    
+    arraysSum = addArrays(arraysSum, array[i]);
+  }
+
+  return arraysSum;
+}
+
+function addArrays(array1, array2){
+	const arraysSum = [];
+  let max = array1.length;
+	
+  if (array2.length > array1.length) {
+  	max = array2.length
+  } 
+  
+  for (let i = 0; i < max; i++) {
+  	let value = 0;
+    
+    if(array1[i]){
+	    value += array1[i];
+    }
+    if(array2[i]){
+	    value += array2[i];
+    }
+    
+    arraysSum.push(value);
+  }
+  
+	return arraysSum;
+}
+  
+const sum = addArrays([2, 6], [1, 2, 3, 4]);
+console.log("sum", sum);
+
+const result = sumOfArrays([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]);
+console.log("result", result);
+  
+
+/// jeszcze inny sposób
+
+
+function sumOfArrays(array) {
+	let arraysSum = [...array[0]];
+  
+  for (let i = 1; i < array.length; i++) {
+  	//console.log('array[i]', array[i]);    
+    arraysSum = addArrays(arraysSum, array[i]);
+  }
+
+  return arraysSum;
+}
+
+function addArrays(array1, array2){
+	let arraysSum;
+  let shorterArray;  
+	
+  if (array1.length > array2.length) {
+			arraysSum = [...array1];
+      shorterArray = array2;
+  } else {
+		  arraysSum = [...array2];
+      shorterArray = array1;
+  }
+  
+  for (let i = 0; i < shorterArray.length; i++) {
+		arraysSum[i] += shorterArray[i];
+  }
+  
+	return arraysSum;
+}
+  
+const sum = addArrays([2, 6], [1, 2, 3, 4]);
+console.log("sum", sum);
+
+const result = sumOfArrays([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]);
+console.log("result", result);
+
+////
+
 
   

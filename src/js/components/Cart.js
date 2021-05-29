@@ -2,7 +2,7 @@ import {settings, select, classNames, templates } from '../settings.js';
 import {utils} from '../utils.js';
 import CartProduct from './CartProduct.js';
 
-class Cart{
+class Cart {
   constructor(element){
     const thisCart = this;
     thisCart.products = [];
