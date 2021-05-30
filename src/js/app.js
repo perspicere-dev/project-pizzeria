@@ -73,8 +73,8 @@ const app = {
     const thisApp = this;
     for (let productData in thisApp.data.products){
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
-      console.log(`"for in" in thisApp.data.products for productData: ${ productData }; in "thisApp.data.products[productData]" [] means value of key ${ productData } and equals to ${ thisApp.data.products[productData] }`);
-      console.log('data', thisApp.data);
+      //console.log(`"for in" in thisApp.data.products for productData: ${ productData }; in "thisApp.data.products[productData]" [] means value of key ${ productData } and equals to ${ thisApp.data.products[productData] }`);
+      //console.log('data', thisApp.data);
     }
   },
 
