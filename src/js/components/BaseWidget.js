@@ -2,7 +2,9 @@ class BaseWidget{
   constructor(wrapperElement, initialValue){
     const thisWidget = this;
 
-    thisWidget.dom = {};
+    thisWidget.dom = {
+      trial: 'trial',
+    };
     thisWidget.dom.wrapper = wrapperElement;
 
     thisWidget.correctValue = initialValue;
