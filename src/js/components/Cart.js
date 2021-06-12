@@ -57,7 +57,7 @@ class Cart {
       deliveryFee: thisCart.deliveryFee,
       products: [],
     };
-      
+    console.log('payload', payload);
     for(let cartProduct of thisCart.products) {
       payload.products.push(cartProduct.getData()); // speak loud 
     }

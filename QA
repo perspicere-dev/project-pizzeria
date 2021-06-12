@@ -87,3 +87,21 @@ Jak to przychodzi do funcji w opisie?
 (chociaż bez kosztu dostawy). Każdej z nich przypisz startowo wartość 0." to mogą być satłe, skoro potem w pętli zmieniam ich wartości?
 
 17. Aktualizacja sum po zmianie ilości - co z czego i dlaczego...
+
+
+///
+
+12.06.21
+
+1. Przecwiczyc co z czego pochodzi i jak dziedziczy na przykładzie sendBooking w booking.js w payload
+
+2. Do przerobiebienia to 
+
+          .then(function(parsedResponse){
+        thisBooking.booked = parsedResponse;
+        console.log('parsedResponse', parsedResponse);
+        thisBooking.makebooked(payload.date, payload.hour, payload.table, payload.duration);
+        console.log('this.booked', thisBooking.booked);
+      });    
+
+      Sam na to nie wpadłem w booking.js

@@ -10,18 +10,9 @@ class Booking {
     this.render(element);
     this.initWidgets();
     this.getData();
-    this._selectedTableId = -1;
+    this.selectedTableId = -1;
   }
-
-  get selectedTableId(){
-    return this._selectedTableId;
-  }
-
-  set selectedTableId(value){
-    this._selectedTableId = value;
-    this.refreshTablesView();
-  }
-
+  
   getData(){
     const thisBooking = this;
     const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePickerWidget.minDate);
@@ -123,13 +114,13 @@ class Booking {
       this.booked[date][hourblock].push(table);
     }
   }
-
+  
   updateDOM() {
     const thisBooking = this;
 
     thisBooking.date = thisBooking.datePickerWidget.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-
+    
     let allAvailable = false;
 
     if (
@@ -164,12 +155,17 @@ class Booking {
     this.dom ={};
     this.dom.wrapper = element;
     this.dom.wrapper.innerHTML = generatedHTML;
-    this.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
-    this.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
-    this.dom.DatePicker = document.querySelector(select.widgets.datePicker.wrapper);
-    this.dom.HourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
+    this.dom.peopleAmount = this.dom.wrapper.querySelector(select.booking.peopleAmount);
+    this.dom.hoursAmount = this.dom.wrapper.querySelector(select.booking.hoursAmount);
+    this.dom.DatePicker = this.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    this.dom.HourPicker = this.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     this.dom.tables = this.dom.wrapper.querySelectorAll(select.booking.tables);
-    this.dom.tablesDiv = document.querySelector(select.booking.tablesDiv);
+    this.dom.tablesDiv = this.dom.wrapper.querySelector(select.booking.tablesDiv);
+    this.dom.bookTable = this.dom.wrapper.querySelector(select.booking.form);
+    this.dom.phone = this.dom.wrapper.querySelector(select.booking.phone); // czy to ok,e w cart i booking zbiera te samne dane?
+    this.dom.address = this.dom.wrapper.querySelector(select.booking.address);
+    this.dom.starters = this.dom.wrapper.querySelectorAll(select.booking.starters);
+
   }
 
   initWidgets(){
@@ -187,12 +183,18 @@ class Booking {
     thisBooking.dom.wrapper.addEventListener('updatedProdutcsQuantity', function(){
       thisBooking.updateDOM();
       thisBooking.selectedTableId = -1;
-      // console.log('selectedTableId', thisBooking.selectedTableId);
+      thisBooking.refreshTablesView();
+      console.log('selectedTableId', thisBooking.selectedTableId);
     });  
 
     thisBooking.dom.tablesDiv.addEventListener('click', function(event){
       
       thisBooking.setSelectedTables(event);
+    });
+
+    thisBooking.dom.bookTable.addEventListener('submit', function (event) {
+      event.preventDefault();
+      thisBooking.sendBooking();
     });
   }
 
@@ -209,10 +211,55 @@ class Booking {
     } else {
       thisBooking.selectedTableId = tableId;
     }
+    thisBooking.refreshTablesView();
     // console.log('event', event.target);
     // console.log('selectedTableId', thisBooking.selectedTableId);
     // console.log('tableBooked', tableBooked);
   }
+
+  sendBooking(){ 
+    const thisBooking = this;
+    const url = settings.db.url + '/' + settings.db.bookings;      
+
+    const payload = {
+      date: thisBooking.datePickerWidget.value,
+      hour: thisBooking.hourPicker.value,
+      table: thisBooking.selectedTableId,
+      duration: thisBooking.hoursAmountAmountWidget.value,
+      ppl: thisBooking.peopleAmountAmountWidget.value,
+      starters: [],
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.address.value,
+    };
+    // console.log('payload', payload);
+      
+    for(let starter of thisBooking.dom.starters) {
+
+      if(starter.checked == true) {
+        payload.starters.push(starter.value);
+      }
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+    fetch(url, options)
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(parsedResponse){
+        thisBooking.booked = parsedResponse;
+        thisBooking.makebooked(payload.date, payload.hour, payload.table, payload.duration);
+        // console.log('parsedResponse', parsedResponse);
+        // console.log('this.booked', thisBooking.booked);
+      });    
+    
+  }
+
 
   refreshTablesView(){
     const thisBooking = this;
@@ -227,6 +274,7 @@ class Booking {
       }
     }
   }
+
 }
 
 export default Booking;
