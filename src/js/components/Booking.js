@@ -10,7 +10,16 @@ class Booking {
     this.render(element);
     this.initWidgets();
     this.getData();
-    this.selectedTableId = -1;
+    this._selectedTableId = -1;
+  }
+
+  get selectedTableId(){
+    return this._selectedTableId;
+  }
+
+  set selectedTableId(value){
+    this._selectedTableId = value;
+    this.refreshTablesView();
   }
 
   getData(){
@@ -178,7 +187,6 @@ class Booking {
     thisBooking.dom.wrapper.addEventListener('updatedProdutcsQuantity', function(){
       thisBooking.updateDOM();
       thisBooking.selectedTableId = -1;
-      thisBooking.refreshTablesView();
       // console.log('selectedTableId', thisBooking.selectedTableId);
     });  
 
@@ -186,9 +194,8 @@ class Booking {
       
       thisBooking.setSelectedTables(event);
     });
-
-
   }
+
   setSelectedTables(event){
     const thisBooking = this;
     const table = event.target;
@@ -202,12 +209,10 @@ class Booking {
     } else {
       thisBooking.selectedTableId = tableId;
     }
-    thisBooking.refreshTablesView();
     // console.log('event', event.target);
     // console.log('selectedTableId', thisBooking.selectedTableId);
     // console.log('tableBooked', tableBooked);
   }
-
 
   refreshTablesView(){
     const thisBooking = this;
