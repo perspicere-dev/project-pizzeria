@@ -217,6 +217,20 @@ class Booking {
     // console.log('tableBooked', tableBooked);
   }
 
+  refreshTablesView(){
+    const thisBooking = this;
+    
+    for (let table of thisBooking.dom.tables) {
+      const tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      
+      if(thisBooking.selectedTableId == tableId){
+        table.classList.add(classNames.booking.selected);
+      } else {
+        table.classList.remove(classNames.booking.selected);
+      }
+    }
+  }
+
   sendBooking(){ 
     const thisBooking = this;
     const url = settings.db.url + '/' + settings.db.bookings;      
@@ -255,26 +269,10 @@ class Booking {
         thisBooking.booked = parsedResponse;
         thisBooking.makebooked(payload.date, payload.hour, payload.table, payload.duration);
         // console.log('parsedResponse', parsedResponse);
-        // console.log('this.booked', thisBooking.booked);
+        console.log('this.booked', thisBooking.booked);
       });    
     
   }
-
-
-  refreshTablesView(){
-    const thisBooking = this;
-    
-    for (let table of thisBooking.dom.tables) {
-      const tableId = table.getAttribute(settings.booking.tableIdAttribute);
-      
-      if(thisBooking.selectedTableId == tableId){
-        table.classList.add(classNames.booking.selected);
-      } else {
-        table.classList.remove(classNames.booking.selected);
-      }
-    }
-  }
-
 }
 
 export default Booking;
