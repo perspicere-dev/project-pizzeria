@@ -18,10 +18,6 @@
         color: $color-light;
     }
 
-    // p {
-    //     display: none;
-    // }
-
     p {
         padding-bottom: 1px;
         color: transparent;
@@ -54,16 +50,12 @@
             color: $color-light;
         }
     }
-    
-
-   
 }
 
 .book-online{
     flex: 35%;
     background-image: url("../../images/assets/pizza-2.jpg");
     background-position: center;
-   
 }
 
 .opening-hours{
@@ -75,24 +67,54 @@
 .gallery{
     display: flex;
     flex-wrap: wrap;
-
+  
     .box {
         position: relative;
-        flex: 0 0 30%;
-        background-color: red;
-        margin: 10px;
-        width:150px;
-        height:200px;
+        flex: 33%;
+        padding: 4px;
+        width: 150px;
+        height: 200px; // dlaczego przy 150px nie jest kwadratem obrazek
         
 
         img {
-            position: absolute;
-            object-fit: cover;
-            width:150px;
-            height:200px;
-            margin: 10px;
+            margin-top: 8px;
+            height: 100%;
+            width: 100%;
+            border-radius: $radius;
+            object-fit: cover;         
         }
-  
+
+        .icons {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: transparent;
+
+            i {
+                font-size: 30px;
+                cursor: pointer;
+                padding: 5px;
+            }
+        }
+
+        &:hover {
+
+            .icons {
+                color: $color-light;
+                transition: .6s;
+            }
+        }
+
+        .fa-heart:hover {
+            color: $color-danger;
+            transition: .6s;
+        }
+
+        .fa-share-alt:hover {
+            color: $color-success;
+            transition: .6s;
+        }
     }
 }
 
