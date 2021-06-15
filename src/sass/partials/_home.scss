@@ -7,7 +7,92 @@
 }
 
 //OPTIONS
-.order-online, .book-online, .opening-hours {
-    color: red;
-    background-color: green;
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    color: $color-light;
+    font-family: $font-header;
+
+    a {
+        text-decoration: none;
+        color: $color-light;
+    }
+
+    // p {
+    //     display: none;
+    // }
+
+    p {
+        padding-bottom: 1px;
+        color: transparent;
+        transform: translateY(50px);
+    }
+   
 }
+.order-online, .book-online, .opening-hours {
+    margin: 5px;
+    border-radius: $radius;
+    text-align: center;
+    padding-bottom: 0px;
+    padding-top: 30px;
+    
+}
+.order-online{
+    flex: 35%;
+    background-image: url("../../images/assets/pizza-1.jpg");
+    background-position: center;
+
+    &:hover {
+        h2 {
+            transform: translateY(-10px);
+            transition: $transition;
+        }
+
+        p {
+            transform: translateY(-10px);
+            transition: .6s;
+            color: $color-light;
+        }
+    }
+    
+
+   
+}
+
+.book-online{
+    flex: 35%;
+    background-image: url("../../images/assets/pizza-2.jpg");
+    background-position: center;
+   
+}
+
+.opening-hours{
+    flex: 100%;
+    background: $color-main;
+    padding: 15px 0;
+}
+//gallery
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+
+    .box {
+        position: relative;
+        flex: 0 0 30%;
+        background-color: red;
+        margin: 10px;
+        width:150px;
+        height:200px;
+        
+
+        img {
+            position: absolute;
+            object-fit: cover;
+            width:150px;
+            height:200px;
+            margin: 10px;
+        }
+  
+    }
+}
+
