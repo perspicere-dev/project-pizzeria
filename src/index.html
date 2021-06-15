@@ -64,7 +64,7 @@
 
     <div id="pages">
       <section id="home">
-        <div id="home" class="home-wrapper container"></div>
+        <div class="home-wrapper container"></div>
       </section>
       <section id="order">
         <div id="product-list" class="product-list container"></div>
@@ -75,7 +75,23 @@
     </div>
     <!-- widget-home -->
     <script id="template-home-widget" type="text/x-handlebars-template">
-      <h1>Hello!</h1>
+      <div class="options">
+        <div class="order-online">
+          <a href="#/order">
+            <h2>ORDER ONLINE</h2>
+          </a>
+        </div>
+        <div class="book-online">
+          <a href="#/book">
+            <h2>BOOK A TABLE</h2>
+          </a>
+        </div>
+        <div class="opening-hours">
+            <h2>OPENING HOURS</h2>
+            <h4>TUE-SUN, 12PM - 12AM</h4>
+        </div>
+       
+      </div>
     </script>
     <!-- widget-home -->
     <script id="template-cart-product" type="text/x-handlebars-template">

@@ -36,11 +36,14 @@ class Home {
 
 
   render(element){
+    const thisHome = this;
     const generatedHTML = templates.homeWidget();
    
-    this.dom ={};
-    this.dom.wrapper = element;
-    this.dom.wrapper.innerHTML = generatedHTML;
+    thisHome.dom ={};
+    thisHome.dom.wrapper = element;
+    thisHome.dom.wrapper.innerHTML = generatedHTML;
+    thisHome.dom.options = element.querySelector('.options');
+    console.log('thisHome.dom.options', thisHome.dom.options);
     // this.dom.peopleAmount = this.dom.wrapper.querySelector(select.booking.peopleAmount);
     // this.dom.hoursAmount = this.dom.wrapper.querySelector(select.booking.hoursAmount);
     // this.dom.DatePicker = this.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
@@ -54,35 +57,44 @@ class Home {
 
   }
 
-  //   initWidgets(){
+  // thisHome.dom.options.addEventLister()
+
+
+  initWidgets(){
+    const thisHome = this;
+
+    thisHome.dom.options.addEventListener('click', function(event){
+      
+    })
+
   //     const thisBooking = this;
     
-  //     thisBooking.peopleAmountAmountWidget = new AmountWidget(this.dom.peopleAmount);
-  //     thisBooking.hoursAmountAmountWidget = new AmountWidget(this.dom.hoursAmount);
-  //     thisBooking.datePickerWidget = new DatePicker(this.dom.DatePicker);
-  //     thisBooking.hourPicker = new HourPicker(this.dom.HourPicker);
+    //     thisBooking.peopleAmountAmountWidget = new AmountWidget(this.dom.peopleAmount);
+    //     thisBooking.hoursAmountAmountWidget = new AmountWidget(this.dom.hoursAmount);
+    //     thisBooking.datePickerWidget = new DatePicker(this.dom.DatePicker);
+    //     thisBooking.hourPicker = new HourPicker(this.dom.HourPicker);
 
-  //     thisBooking.dom.peopleAmount.addEventListener('updatedProdutcsQuantity', function(){
-  //     });
-  //     thisBooking.dom.hoursAmount.addEventListener('updatedProdutcsQuantity', function(){});
+    //     thisBooking.dom.peopleAmount.addEventListener('updatedProdutcsQuantity', function(){
+    //     });
+    //     thisBooking.dom.hoursAmount.addEventListener('updatedProdutcsQuantity', function(){});
 
-  //     thisBooking.dom.wrapper.addEventListener('updatedProdutcsQuantity', function(){
-  //       thisBooking.updateDOM();
-  //       thisBooking.selectedTableId = -1;
-  //       thisBooking.refreshTablesView();
-  //       console.log('selectedTableId', thisBooking.selectedTableId);
-  //     });  
+    //     thisBooking.dom.wrapper.addEventListener('updatedProdutcsQuantity', function(){
+    //       thisBooking.updateDOM();
+    //       thisBooking.selectedTableId = -1;
+    //       thisBooking.refreshTablesView();
+    //       console.log('selectedTableId', thisBooking.selectedTableId);
+    //     });  
 
-  //     thisBooking.dom.tablesDiv.addEventListener('click', function(event){
+    //     thisBooking.dom.tablesDiv.addEventListener('click', function(event){
       
-  //       thisBooking.setSelectedTables(event);
-  //     });
+    //       thisBooking.setSelectedTables(event);
+    //     });
 
   //     thisBooking.dom.bookTable.addEventListener('submit', function (event) {
   //       event.preventDefault();
   //       thisBooking.sendBooking();
   //     });
-  //   }
+  }
 
 }
 

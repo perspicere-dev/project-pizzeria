@@ -2,7 +2,7 @@ import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
-import Home from './components/Booking.js';
+import Home from './components/Home.js';
 
 const app = {
   
@@ -19,7 +19,7 @@ const app = {
     const thisApp = this;
 
     thisApp.homeWrapper = document.querySelector(select.containerOf.home);
-    console.log('thisApp.homeWrapper', thisApp.homeWrapper);
+    // console.log('thisApp.homeWrapper', thisApp.homeWrapper);
 
     thisApp.homeWrapper = new Home(thisApp.homeWrapper);
   },
