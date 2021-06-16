@@ -41,6 +41,7 @@ export const select = {
       input: 'input[type="range"]',
       output: '.output',
     },
+    carousel: '.main-carousel',
   },
   booking: {
     peopleAmount: '.people-amount',

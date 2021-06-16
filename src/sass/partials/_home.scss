@@ -63,6 +63,18 @@
     background: $color-main;
     padding: 15px 0;
 }
+
+// carousel
+.carousel-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(gallery-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+  }
+
+
 //gallery
 .gallery{
     display: flex;
