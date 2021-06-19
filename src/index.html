@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
@@ -95,15 +96,36 @@
       
       
         <!-- carousel-home -->
-        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+        <div class="main-carousel">
           <div class="carousel-cell" >
-            <img src="./images/assets/pizza-4.jpg">
+            <div class="cell-image">
+              <img src="./images/assets/pizza-4.jpg">
+            </div>
+            <div class="cell-text">
+              <h2>Best Service</h2>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, adipisci.</p>
+              <p>- Martha Hoff</p>
+            </div>
           </div>
-          <div class="carousel-cell">
-            <img src="./images/assets/pizza-4.jpg">
+          <div class="carousel-cell" >
+            <div class="cell-image">
+              <img src="./images/assets/pizza-1.jpg">
+            </div>
+            <div class="cell-text">
+              <h2>Top quality</h2>
+              <p>Lout enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+              <p>- Anna Gasio</p>
+            </div>
           </div>
-          <div class="carousel-cell">
-            <img src="./images/assets/pizza-4.jpg">
+          <div class="carousel-cell" >
+            <div class="cell-image">
+              <img src="./images/assets/pizza-2.jpg">
+            </div>
+            <div class="cell-text">
+              <h2>Delicious food</h2>
+              <p>Lquis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum.</p>
+              <p>- Jacek Jacenty</p>
+            </div>
           </div>
         </div>
 
@@ -112,46 +134,47 @@
         <!-- widget-home-gallery -->
         <div class="gallery">
           <div class="box">
-            <div class="icons">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
             <img src="./images/assets/pizza-4.jpg">
-          </div>
-          <div class="box">
             <div class="icons">
               <i class="fas fa-heart"></i>
               <i class="fas fa-share-alt"></i>
             </div>
+            
+          </div>
+          <div class="box">
             <img src="./images/assets/pizza-5.jpg">
-          </div>
-          <div class="box">
             <div class="icons">
               <i class="fas fa-heart"></i>
               <i class="fas fa-share-alt"></i>
             </div>
+          </div>
+          <div class="box">
             <img src="./images/assets/pizza-6.jpg">
-          </div>
-          <div class="box">
             <div class="icons">
               <i class="fas fa-heart"></i>
               <i class="fas fa-share-alt"></i>
             </div>
+          </div>
+          <div class="box">
             <img src="./images/assets/pizza-7.jpg">
-          </div>
-          <div class="box">
             <div class="icons">
               <i class="fas fa-heart"></i>
               <i class="fas fa-share-alt"></i>
             </div>
+          </div>
+          <div class="box">
             <img src="./images/assets/pizza-8.jpg">
-          </div>
-          <div class="box">
             <div class="icons">
               <i class="fas fa-heart"></i>
               <i class="fas fa-share-alt"></i>
             </div>
+          </div>
+          <div class="box">
             <img src="./images/assets/pizza-9.jpg">
+            <div class="icons">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
           </div>
         </div>
         <!-- widget-home-gallery -->
@@ -265,6 +288,7 @@
     </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
   <script src="js/app.js" type="module"></script>

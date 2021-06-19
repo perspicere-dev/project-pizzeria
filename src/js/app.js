@@ -4,7 +4,7 @@ import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
 import Home from './components/Home.js';
 
-const app = {
+export const app = {
   
   initBooking: function(){
     const thisApp = this;
@@ -117,7 +117,6 @@ const app = {
     });
   },
 
-
   init: function(){
     const thisApp = this;
     
@@ -126,6 +125,7 @@ const app = {
     thisApp.initCart();
     thisApp.initBooking();
     thisApp.initHome();
+   
   },
 
 };
